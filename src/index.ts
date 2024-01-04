@@ -1,3 +1,7 @@
+import * as env from 'dotenv'
+env.config()
+
+
 //How every API is
 import app from './server'
 
