@@ -14,9 +14,22 @@ export const protect = (req,res, next) => {
     if(!bearer){
         res.status(401)
         res.send({message : 'Not authorized'})
-
-        return
-    }else{
-        next()
+        return 
     }
+
+    const [label , token] = bearer.split(' ')
+    
+    try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = payload;
+        
+        console.log(payload);
+        next();
+        return;
+      } catch (e) {
+        console.error(e);
+        res.status(401);
+        res.send("Not authorized");
+        return;
+      }
 }

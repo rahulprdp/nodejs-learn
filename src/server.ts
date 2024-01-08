@@ -1,8 +1,9 @@
 import express from 'express'
-import { router } from './modules/product/product.router'
+import { router } from './modules/product/product.routing'
 import morgan from 'morgan'; //?Middlewear lib, similar to Sentry
 import cors from 'cors'
 import { protect } from './utils/auth';
+import { createUser, signIn } from './modules/user/user';
 //? The API
 const app = express()
 
@@ -42,6 +43,9 @@ app.get('/',(req : any,res)=>{
 })
 
 app.use('/api', protect, router)
+
+app.post('/register',createUser)
+app.post('/login',signIn)
 
 export default app
 
