@@ -1,0 +1,14 @@
+
+ //TODO: Custom Middlewears
+// app.use((req,res,next)=>{
+//     req['_XUR'] = "qwertyuiop"
+//     next()
+// })
+
+// const customLogger = (message : string) => (req,res,next)=>{
+//     console.log(`Middlewear msg : ${message}`);
+//     next()
+// }
+
+// app.use(customLogger('Hola!'))
+//? Compose-middlewear to chain middlewears together
